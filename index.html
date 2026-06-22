@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Yéti de Villard — Chalet d'exception à Villard-Reculas (Alpe d'Huez)</title>
+  <meta name="description" content="Location d'un chalet de luxe de 170 m² à Villard-Reculas, domaine de l'Alpe d'Huez. 14 personnes, 6 chambres, bain nordique à 39°C, vue panoramique. Demandez votre séjour." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Inter (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            // Charte graphique Le Yéti de Villard
+            mountain: {
+              DEFAULT: '#757BFD', // Bleu montagne — couleur principale
+              dark: '#5258E0',    // Bleu foncé — cartes imbriquées / profondeur
+            },
+            coral: {
+              DEFAULT: '#FF6464', // Corail — couleur d'accent
+              light: '#FF8080',   // Corail clair — survols
+              dark: '#E64A4A',    // Corail foncé — texte d'accent sur fond clair
+            },
+          },
+          borderRadius: {
+            '4xl': '2.5rem',
+          },
+          boxShadow: {
+            soft: '0 20px 45px -20px rgba(15, 23, 42, 0.25)',
+            'soft-lg': '0 35px 70px -30px rgba(15, 23, 42, 0.35)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    /* Léger overlay neutre pour le hero, géré aussi via Tailwind */
+    .hero-overlay {
+      background: linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.65) 45%, rgba(15,23,42,0.85) 100%);
+    }
+    .fade-in { animation: fadeIn 0.6s ease both; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body class="bg-white text-slate-700 antialiased">
+
+  <!-- ============================================================= -->
+  <!-- 1. TOP BAR — fond bleu foncé : adresse + réseaux sociaux       -->
+  <!--    ⚠️ AUCUN téléphone, AUCUN e-mail                            -->
+  <!-- ============================================================= -->
+  <div class="bg-mountain-dark text-white text-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 min-w-0">
+        <i data-lucide="map-pin" class="w-4 h-4 shrink-0 text-coral-light"></i>
+        <span class="truncate">18 Rte des Alpages, 38114 Villard-Reculas, France</span>
+      </div>
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#" aria-label="Instagram" class="hover:text-coral-light transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="Facebook" class="hover:text-coral-light transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="YouTube" class="hover:text-coral-light transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- 2. NAVIGATION                                                  -->
+  <!-- ============================================================= -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-mountain text-white shadow-soft group-hover:bg-mountain-dark transition-colors">
+          <i data-lucide="mountain-snow" class="w-6 h-6"></i>
+        </span>
+        <span class="font-extrabold text-lg tracking-tight text-slate-900 leading-none">
+          Le Yéti<span class="block text-xs font-medium text-mountain tracking-wide">de Villard</span>
+        </span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#caracteristiques" class="hover:text-mountain transition-colors">Caractéristiques</a>
+        <a href="#activites" class="hover:text-mountain transition-colors">Activités</a>
+        <a href="#tarifs" class="hover:text-mountain transition-colors">Tarifs</a>
+        <a href="#contact" class="hover:text-mountain transition-colors">Contact</a>
+      </div>
+
+      <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-coral hover:bg-coral-light text-white font-semibold text-sm px-5 py-2.5 shadow-soft transition-colors">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        Contactez-nous
+      </a>
+    </nav>
+  </header>
+
+  <!-- ============================================================= -->
+  <!-- 3. HERO — photo du chalet en fond + overlay sombre neutre      -->
+  <!-- ============================================================= -->
+  <section id="hero" class="relative min-h-[88vh] flex items-center">
+    <img
+      src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=2000&q=80"
+      alt="Vue extérieure du chalet Le Yéti de Villard et des toits enneigés à Villard-Reculas"
+      class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-24 text-white fade-in">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-1 mb-5 text-coral-light">
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          <span class="ml-2 text-sm font-medium text-white/90">Chalet d'exception · Alpe d'Huez</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
+          Un lieu d'exception à Villard-Reculas
+        </h1>
+        <p class="mt-6 text-lg text-white/85 max-w-xl">
+          Un chalet de 170 m² au cœur du domaine de l'Alpe d'Huez. 14 personnes,
+          6 chambres, vue panoramique sur la vallée et bain nordique à 39°C,
+          ouvert toute l'année.
+        </p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral-light text-white font-semibold px-7 py-3.5 shadow-soft-lg transition-colors">
+            <i data-lucide="send" class="w-5 h-5"></i>
+            Demander un séjour
+          </a>
+          <a href="#galerie" class="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur text-white font-semibold px-7 py-3.5 border border-white/30 transition-colors">
+            <i data-lucide="images" class="w-5 h-5"></i>
+            Voir les photos
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 4. GALERIE PHOTOS — placée tôt, avant la description           -->
+  <!-- ============================================================= -->
+  <section id="galerie" class="py-20 sm:py-24 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Galerie</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Découvrez le chalet en images
+        </h2>
+        <p class="mt-4 text-slate-600">
+          De la façade extérieure aux chambres et pièces de vie, plongez dans
+          l'atmosphère chaleureuse du Yéti de Villard.
+        </p>
+      </div>
+
+      <!-- Grille : 1 grande photo mise en avant + photos secondaires -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[180px] sm:auto-rows-[220px]">
+        <div class="col-span-2 row-span-2 rounded-4xl overflow-hidden shadow-soft group">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80"
+               alt="Extérieur du chalet Le Yéti de Villard sous la neige"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft group">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"
+               alt="Salon chaleureux du chalet"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft group">
+          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+               alt="Chambre cosy avec vue montagne"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft group">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+               alt="Cuisine équipée et espace repas"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="rounded-3xl overflow-hidden shadow-soft group">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
+               alt="Salle de bain moderne du chalet"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+      </div>
+
+      <div class="mt-12 flex justify-center">
+        <!-- TODO client : remplacer le href par le lien de l'album Google Photos -->
+        <a href="[lien Google Photos]" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-3 rounded-full bg-coral hover:bg-coral-light text-white font-bold text-base sm:text-lg px-9 py-4 shadow-soft-lg transition-colors">
+          <i data-lucide="image" class="w-6 h-6"></i>
+          Voir l'album photo complet
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 5. CARACTÉRISTIQUES PRINCIPALES — 3 cartes                     -->
+  <!-- ============================================================= -->
+  <section id="caracteristiques" class="py-20 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Caractéristiques</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Pensé pour les grands séjours
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Carte 1 : Chalet -->
+        <div class="rounded-4xl bg-slate-50 p-8 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-mountain text-white mb-6">
+            <i data-lucide="home" class="w-7 h-7"></i>
+          </span>
+          <h3 class="text-xl font-bold text-slate-900">Le chalet</h3>
+          <p class="mt-3 text-slate-600">
+            <span class="font-semibold text-slate-900">170 m²</span> d'espace de
+            vie baigné de lumière, avec une
+            <span class="font-semibold text-slate-900">vue panoramique</span> sur
+            les sommets.
+          </p>
+        </div>
+
+        <!-- Carte 2 : Capacité -->
+        <div class="rounded-4xl bg-slate-50 p-8 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-mountain text-white mb-6">
+            <i data-lucide="users" class="w-7 h-7"></i>
+          </span>
+          <h3 class="text-xl font-bold text-slate-900">Capacité</h3>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> <span class="font-semibold text-slate-900">14 personnes</span></li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> 6 chambres</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> 4 salles de bain</li>
+          </ul>
+        </div>
+
+        <!-- Carte 3 : Extérieur -->
+        <div class="rounded-4xl bg-slate-50 p-8 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-mountain text-white mb-6">
+            <i data-lucide="trees" class="w-7 h-7"></i>
+          </span>
+          <h3 class="text-xl font-bold text-slate-900">Extérieur</h3>
+          <ul class="mt-3 space-y-2">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> Terrasse orientée sud-ouest</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> 4 places de parking</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-coral"></i> Bain nordique à 39°C</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 6. DESCRIPTION DU CHALET — texte + statistiques                -->
+  <!-- ============================================================= -->
+  <section class="py-20 sm:py-24 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Le chalet</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Au pied des pistes, plein sud
+        </h2>
+        <div class="mt-6 space-y-4 text-slate-600 leading-relaxed">
+          <p>
+            Niché à Villard-Reculas, village authentique du domaine de l'Alpe
+            d'Huez, Le Yéti de Villard vous accueille dans 170 m² chaleureux,
+            orientés plein sud / ouest pour profiter du soleil du matin au
+            coucher.
+          </p>
+          <p>
+            Les remontées mécaniques se trouvent à
+            <span class="font-semibold text-slate-900">400 mètres par la route et
+            300 mètres par la piste</span>. Le départ de l'
+            <!-- TODO client : remplacer le href par le lien de l'ESF local -->
+            <a href="[lien ESF]" target="_blank" rel="noopener" class="font-semibold text-coral-dark hover:text-coral underline decoration-coral/40 underline-offset-2">école de ski ESF</a>
+            est à proximité immédiate.
+          </p>
+          <p>
+            Les commerces du village sont accessibles à pied : tout est réuni
+            pour un séjour serein, entre 250 km de pistes en hiver et de superbes
+            sentiers de randonnée en été.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4">
+        <div class="rounded-3xl bg-white p-6 text-center shadow-soft">
+          <div class="text-3xl font-extrabold text-mountain">170</div>
+          <div class="mt-1 text-sm font-medium text-slate-500">m² habitables</div>
+        </div>
+        <div class="rounded-3xl bg-white p-6 text-center shadow-soft">
+          <div class="text-3xl font-extrabold text-mountain">14</div>
+          <div class="mt-1 text-sm font-medium text-slate-500">personnes</div>
+        </div>
+        <div class="rounded-3xl bg-white p-6 text-center shadow-soft">
+          <div class="text-3xl font-extrabold text-mountain">250</div>
+          <div class="mt-1 text-sm font-medium text-slate-500">km de pistes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 7. ÉQUIPEMENTS — 3 cartes sur fond bleu                        -->
+  <!-- ============================================================= -->
+  <section class="py-20 sm:py-24 bg-mountain text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-light font-semibold text-sm uppercase tracking-wider">Équipements</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Tout le confort, sans compromis
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Carte A : Informations essentielles -->
+        <div class="rounded-4xl bg-mountain-dark p-8 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/15 text-white mb-6">
+            <i data-lucide="info" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-xl font-bold text-white">Informations essentielles</h3>
+          <ul class="mt-4 space-y-2.5 text-white/85 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> <span class="font-semibold text-white">4 places de parking</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Bain nordique</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Internet</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Linge & serviettes fournis</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Chauffage & sèche-cheveux</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Bureau</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Détecteurs & trousse de secours</li>
+          </ul>
+        </div>
+
+        <!-- Carte B : Cuisine équipée -->
+        <div class="rounded-4xl bg-mountain-dark p-8 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/15 text-white mb-6">
+            <i data-lucide="utensils" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-xl font-bold text-white">Cuisine équipée</h3>
+          <ul class="mt-4 space-y-2.5 text-white/85 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Four</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Micro-ondes</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Réfrigérateur</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Lave-vaisselle</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Plaques de cuisson</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Grille-pain & bouilloire</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Machine à glaçons</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> <span class="font-semibold text-white">Machine à espresso</span></li>
+          </ul>
+        </div>
+
+        <!-- Carte C : Activités & loisirs -->
+        <div class="rounded-4xl bg-mountain-dark p-8 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/15 text-white mb-6">
+            <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-xl font-bold text-white">Activités & loisirs</h3>
+          <ul class="mt-4 space-y-2.5 text-white/85 text-sm">
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Télévision & <span class="font-semibold text-white">Starlink</span></li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Jeux & livres</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Randonnées</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> 250 km de pistes</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Ski / snowboard</li>
+            <li class="flex items-start gap-2"><i data-lucide="dot" class="w-4 h-4 mt-0.5 text-coral-light shrink-0"></i> Parapente & raquettes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 8. BAIN NORDIQUE — section dédiée (photo + texte)              -->
+  <!--    ⚠️ ne PAS écrire « privatif »                               -->
+  <!-- ============================================================= -->
+  <section class="py-20 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="rounded-4xl overflow-hidden shadow-soft-lg order-2 lg:order-1">
+        <img src="https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?auto=format&fit=crop&w=1200&q=80"
+             alt="Bain nordique chauffé à 39°C face aux montagnes"
+             class="w-full h-full object-cover aspect-[4/3]" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Détente</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Bain Nordique
+        </h2>
+        <p class="mt-6 text-slate-600 leading-relaxed">
+          Plongez dans une eau filtrée et chauffée à
+          <span class="font-semibold text-slate-900">39°C</span>, le regard posé
+          sur les sommets. Un instant de pure détente après une journée de ski ou
+          de randonnée.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <div class="inline-flex items-center gap-3 rounded-2xl bg-slate-50 px-5 py-3 shadow-soft">
+            <i data-lucide="thermometer" class="w-5 h-5 text-mountain"></i>
+            <span class="font-semibold text-slate-900">Eau filtrée à 39°C</span>
+          </div>
+          <div class="inline-flex items-center gap-3 rounded-2xl bg-slate-50 px-5 py-3 shadow-soft">
+            <i data-lucide="calendar-check" class="w-5 h-5 text-mountain"></i>
+            <span class="font-semibold text-slate-900">Ouvert 365 jours / an</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 9. ACTIVITÉS AUTOUR — cartes                                   -->
+  <!--    ⚠️ PAS de VTT, PAS de patinoire                             -->
+  <!-- ============================================================= -->
+  <section id="activites" class="py-20 sm:py-24 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Aux alentours</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Des activités pour tous
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Ski & Snowboard -->
+        <div class="rounded-4xl bg-white p-7 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-mountain text-white mb-5">
+            <i data-lucide="snowflake" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900">Ski & Snowboard</h3>
+          <p class="mt-2 text-slate-600 text-sm">
+            250 km de pistes sur le domaine de l'Alpe d'Huez et cours avec l'
+            <!-- TODO client : lien ESF -->
+            <a href="[lien ESF]" target="_blank" rel="noopener" class="font-semibold text-coral-dark hover:text-coral underline decoration-coral/40 underline-offset-2">école de ski ESF</a>.
+          </p>
+        </div>
+
+        <!-- Randonnées -->
+        <div class="rounded-4xl bg-white p-7 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-mountain text-white mb-5">
+            <i data-lucide="footprints" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900">Randonnées</h3>
+          <p class="mt-2 text-slate-600 text-sm">
+            Sentiers panoramiques au départ du village, été comme hiver en
+            raquettes.
+          </p>
+        </div>
+
+        <!-- Parapente -->
+        <div class="rounded-4xl bg-white p-7 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-mountain text-white mb-5">
+            <i data-lucide="wind" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900">Parapente</h3>
+          <p class="mt-2 text-slate-600 text-sm">
+            Survolez la vallée et les massifs en vol biplace, sensations
+            garanties.
+          </p>
+        </div>
+
+        <!-- La Folie Douce & Tomorrowland -->
+        <div class="rounded-4xl bg-white p-7 shadow-soft hover:shadow-soft-lg transition-shadow">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-mountain text-white mb-5">
+            <i data-lucide="music" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900">La Folie Douce & Tomorrowland</h3>
+          <p class="mt-2 text-slate-600 text-sm">
+            L'ambiance festive emblématique de l'Alpe d'Huez et ses événements
+            incontournables.
+          </p>
+        </div>
+
+        <!-- Activités famille -->
+        <div class="rounded-4xl bg-white p-7 shadow-soft hover:shadow-soft-lg transition-shadow sm:col-span-2 lg:col-span-1">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-mountain text-white mb-5">
+            <i data-lucide="baby" class="w-6 h-6"></i>
+          </span>
+          <h3 class="text-lg font-bold text-slate-900">Activités famille</h3>
+          <p class="mt-2 text-slate-600 text-sm">
+            Chien de traîneau, ski joëring, acrobranche, escape game… de quoi
+            ravir petits et grands.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 10. TARIFS — 4 cartes saisons + 3 encarts                      -->
+  <!--     ⚠️ PAS d'acompte / conditions de paiement                  -->
+  <!-- ============================================================= -->
+  <section id="tarifs" class="py-20 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Tarifs</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Nos tarifs par saison
+        </h2>
+        <p class="mt-4 text-slate-600">Tarifs à la semaine pour l'ensemble du chalet (14 personnes).</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Basse saison -->
+        <div class="rounded-4xl bg-slate-50 p-7 shadow-soft flex flex-col">
+          <h3 class="text-lg font-bold text-slate-900">Basse saison</h3>
+          <p class="mt-1 text-sm text-slate-500">Hors vacances scolaires</p>
+          <div class="mt-6 text-3xl font-extrabold text-mountain">[à fournir]</div>
+          <p class="mt-1 text-sm text-slate-500">la semaine</p>
+        </div>
+
+        <!-- Moyenne saison (été) -->
+        <div class="rounded-4xl bg-slate-50 p-7 shadow-soft flex flex-col">
+          <h3 class="text-lg font-bold text-slate-900">Moyenne saison</h3>
+          <p class="mt-1 text-sm text-slate-500">Été</p>
+          <div class="mt-6 text-3xl font-extrabold text-mountain">[à fournir]</div>
+          <p class="mt-1 text-sm text-slate-500">la semaine</p>
+        </div>
+
+        <!-- Haute saison (ski) -->
+        <div class="rounded-4xl bg-slate-50 p-7 shadow-soft flex flex-col">
+          <h3 class="text-lg font-bold text-slate-900">Haute saison</h3>
+          <p class="mt-1 text-sm text-slate-500">Ski</p>
+          <div class="mt-6 text-3xl font-extrabold text-mountain">[à fournir]</div>
+          <p class="mt-1 text-sm text-slate-500">la semaine</p>
+        </div>
+
+        <!-- Noël & Nouvel An (la plus chère) -->
+        <div class="rounded-4xl bg-mountain text-white p-7 shadow-soft-lg flex flex-col relative overflow-hidden">
+          <span class="absolute top-5 right-5 inline-flex items-center gap-1 rounded-full bg-coral text-white text-xs font-bold px-3 py-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Premium
+          </span>
+          <h3 class="text-lg font-bold text-white">Noël & Nouvel An</h3>
+          <p class="mt-1 text-sm text-white/80">Fêtes de fin d'année</p>
+          <div class="mt-6 text-3xl font-extrabold text-white">[à fournir]</div>
+          <p class="mt-1 text-sm text-white/80">la semaine</p>
+        </div>
+      </div>
+
+      <!-- 3 encarts -->
+      <div class="mt-8 grid sm:grid-cols-3 gap-6">
+        <div class="rounded-3xl border border-slate-100 p-6 flex items-center gap-4 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-coral/10 text-coral-dark shrink-0">
+            <i data-lucide="clock" class="w-6 h-6"></i>
+          </span>
+          <div>
+            <div class="font-bold text-slate-900">Arrivée 17h / Départ 10h</div>
+            <p class="text-sm text-slate-500">Horaires standards</p>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-slate-100 p-6 flex items-center gap-4 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-coral/10 text-coral-dark shrink-0">
+            <i data-lucide="sparkle" class="w-6 h-6"></i>
+          </span>
+          <div>
+            <div class="font-bold text-slate-900">Ménage inclus</div>
+            <p class="text-sm text-slate-500">Compris dans les tarifs</p>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-slate-100 p-6 flex items-center gap-4 shadow-soft">
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-coral/10 text-coral-dark shrink-0">
+            <i data-lucide="croissant" class="w-6 h-6"></i>
+          </span>
+          <div>
+            <div class="font-bold text-slate-900">Petit-déjeuner</div>
+            <p class="text-sm text-slate-500">En option</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 11. AVIS CLIENTS — témoignages 5 étoiles                       -->
+  <!-- ============================================================= -->
+  <section class="py-20 sm:py-24 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <span class="text-coral-dark font-semibold text-sm uppercase tracking-wider">Avis clients</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+          Ils ont séjourné au Yéti
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <figure class="rounded-4xl bg-white p-8 shadow-soft">
+          <div class="flex gap-1 text-coral mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <blockquote class="text-slate-600">
+            « Un chalet splendide, parfait pour notre grande famille. Le bain
+            nordique au coucher du soleil restera un souvenir inoubliable. »
+          </blockquote>
+          <figcaption class="mt-5 font-semibold text-slate-900">Camille & sa tribu</figcaption>
+        </figure>
+
+        <figure class="rounded-4xl bg-white p-8 shadow-soft">
+          <div class="flex gap-1 text-coral mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <blockquote class="text-slate-600">
+            « Skis aux pieds en quelques minutes, vue à couper le souffle et un
+            confort irréprochable. On reviendra l'été prochain ! »
+          </blockquote>
+          <figcaption class="mt-5 font-semibold text-slate-900">Thomas & ses amis</figcaption>
+        </figure>
+
+        <figure class="rounded-4xl bg-white p-8 shadow-soft">
+          <div class="flex gap-1 text-coral mb-4">
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+          </div>
+          <blockquote class="text-slate-600">
+            « Tout était impeccable, du ménage à la literie. Une adresse rare pour
+            réunir 14 personnes dans un cadre d'exception. »
+          </blockquote>
+          <figcaption class="mt-5 font-semibold text-slate-900">Sophie L.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 12. CONTACT — formulaire sur fond bleu (FormSubmit AJAX)       -->
+  <!-- ============================================================= -->
+  <section id="contact" class="py-20 sm:py-24 bg-mountain text-white">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-coral-light font-semibold text-sm uppercase tracking-wider">Contact</span>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+          Demandez votre séjour
+        </h2>
+        <p class="mt-4 text-white/85">
+          Indiquez vos dates et votre projet : nous revenons vers vous au plus
+          vite.
+        </p>
+      </div>
+
+      <form id="contact-form" class="rounded-4xl bg-mountain-dark p-7 sm:p-10 shadow-soft-lg">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="prenom" class="block text-sm font-medium text-white/90 mb-1.5">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent" placeholder="Votre prénom" />
+          </div>
+          <div>
+            <label for="nom" class="block text-sm font-medium text-white/90 mb-1.5">Nom</label>
+            <input type="text" id="nom" name="nom" required
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent" placeholder="Votre nom" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-white/90 mb-1.5">E-mail</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent" placeholder="vous@exemple.com" />
+          </div>
+          <div>
+            <label for="telephone" class="block text-sm font-medium text-white/90 mb-1.5">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone"
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent" placeholder="Votre numéro" />
+          </div>
+          <div>
+            <label for="arrivee" class="block text-sm font-medium text-white/90 mb-1.5">Date d'arrivée</label>
+            <input type="date" id="arrivee" name="date_arrivee"
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent [color-scheme:dark]" />
+          </div>
+          <div>
+            <label for="depart" class="block text-sm font-medium text-white/90 mb-1.5">Date de départ</label>
+            <input type="date" id="depart" name="date_depart"
+                   class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent [color-scheme:dark]" />
+          </div>
+        </div>
+
+        <div class="mt-5">
+          <label for="message" class="block text-sm font-medium text-white/90 mb-1.5">Message</label>
+          <textarea id="message" name="message" rows="4"
+                    class="w-full rounded-2xl bg-white/10 border border-white/20 px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent" placeholder="Nombre de personnes, questions, demandes particulières…"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn"
+                class="mt-7 w-full inline-flex items-center justify-center gap-2 rounded-full bg-coral hover:bg-coral-light text-white font-bold text-lg px-8 py-4 shadow-soft-lg transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+          <i data-lucide="send" class="w-5 h-5"></i>
+          <span id="submit-label">Envoyer ma demande</span>
+        </button>
+
+        <!-- Messages de succès / erreur -->
+        <p id="form-status" class="mt-4 text-center text-sm font-medium hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- 13. FOOTER — simple : marque + réseaux + localisation          -->
+  <!-- ============================================================= -->
+  <footer class="bg-slate-900 text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid md:grid-cols-2 gap-10">
+      <!-- Bloc marque -->
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-mountain text-white">
+            <i data-lucide="mountain-snow" class="w-6 h-6"></i>
+          </span>
+          <span class="font-extrabold text-lg tracking-tight text-white">Le Yéti de Villard</span>
+        </div>
+        <p class="text-slate-400 max-w-md">
+          Chalet d'exception de 170 m² à Villard-Reculas, au cœur du domaine de
+          l'Alpe d'Huez. 14 personnes, vue panoramique et bain nordique à 39°C.
+        </p>
+        <div class="flex items-center gap-4 mt-6">
+          <a href="#" aria-label="Instagram" class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-coral transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+          <a href="#" aria-label="Facebook" class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-coral transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+          <a href="#" aria-label="YouTube" class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-coral transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+        </div>
+      </div>
+
+      <!-- Localisation -->
+      <div class="md:text-right">
+        <h3 class="font-bold text-white mb-4">Localisation</h3>
+        <p class="text-slate-400">18 Rte des Alpages<br />38114 Villard-Reculas, France</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=18+Rte+des+Alpages+38114+Villard-Reculas+France"
+           target="_blank" rel="noopener"
+           class="mt-4 inline-flex items-center gap-2 rounded-full bg-mountain hover:bg-mountain-dark text-white font-semibold text-sm px-5 py-2.5 transition-colors">
+          <i data-lucide="map-pin" class="w-4 h-4"></i>
+          Voir sur Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- Bas de page : mention légale minimale -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-500">
+        Le Yéti de Villard — Société par Actions Simplifiée (SAS) — SIRET : [à compléter]
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!-- SCRIPTS                                                        -->
+  <!-- ============================================================= -->
+  <script>
+    // Initialise les icônes Lucide
+    lucide.createIcons();
+
+    /**
+     * FORM_ENDPOINT — endpoint FormSubmit.co du formulaire de contact.
+     *
+     * ⚠️ IMPORTANT : pour que l'adresse e-mail de réception NE SOIT JAMAIS
+     * visible dans le code, on utilise le « token aléatoire » de FormSubmit
+     * (et NON l'e-mail en clair).
+     *
+     * Comment l'obtenir / le remplacer :
+     *   1. Aller sur https://formsubmit.co et activer l'adresse de réception
+     *      (en envoyant un premier formulaire vers https://formsubmit.co/votre@email).
+     *   2. FormSubmit renvoie alors un identifiant aléatoire (token) propre à
+     *      cette adresse, par e-mail.
+     *   3. Remplacer la valeur ci-dessous par :
+     *      'https://formsubmit.co/ajax/VOTRE_TOKEN_ALEATOIRE'
+     *
+     * L'endpoint /ajax/ permet l'envoi en arrière-plan (sans redirection),
+     * pour afficher nos propres messages de succès / erreur.
+     */
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/VOTRE_TOKEN_ALEATOIRE';
+
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('submit-btn');
+    const submitLabel = document.getElementById('submit-label');
+
+    function showStatus(message, ok) {
+      statusEl.textContent = message;
+      statusEl.classList.remove('hidden', 'text-white', 'text-coral-light');
+      // Succès : blanc (lisible sur fond bleu) ; Erreur : corail clair
+      statusEl.classList.add(ok ? 'text-white' : 'text-coral-light');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.classList.add('hidden');
+
+      submitBtn.disabled = true;
+      submitLabel.textContent = 'Envoi en cours…';
+
+      // Construit le payload depuis les champs du formulaire
+      const data = new FormData(form);
+      // Options FormSubmit : sujet personnalisé + protection anti-spam
+      data.append('_subject', 'Nouvelle demande de séjour — Le Yéti de Villard');
+      data.append('_template', 'table');
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data,
+        });
+
+        if (res.ok) {
+          form.reset();
+          showStatus('✓ Merci ! Votre demande a bien été envoyée. Nous vous répondrons rapidement.', true);
+        } else {
+          showStatus("Une erreur est survenue lors de l'envoi. Merci de réessayer dans un instant.", false);
+        }
+      } catch (err) {
+        showStatus("Impossible d'envoyer le formulaire pour le moment. Vérifiez votre connexion et réessayez.", false);
+      } finally {
+        submitBtn.disabled = false;
+        submitLabel.textContent = 'Envoyer ma demande';
+      }
+    });
+  </script>
+</body>
+</html>
